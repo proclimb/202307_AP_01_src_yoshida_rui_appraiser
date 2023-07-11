@@ -59,7 +59,7 @@ function fnPage($c, $p, $a)
 	$conn = fnDbConnect();
 	$sql = "SELECT DEL FROM TBLSTOCK WHERE DEL = 1";
 	$res = mysqli_query($conn, $sql);
-	echo $res->num_rows;
+	print $res->num_rows;
 	?>件<br />
 	<?php
 	return ($p);
@@ -145,7 +145,13 @@ function fnAuthorityName($n)
 //
 function fnRankName($n)
 {
-	return (substr('ABCDEF ', $n, 1));
+	$tmp[0] = 'A';
+	$tmp[1] = 'B';
+	$tmp[2] = 'C';
+	$tmp[3] = 'D';
+	$tmp[4] = 'E';
+
+	return ($tmp[$n]);
 }
 
 
