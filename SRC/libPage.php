@@ -54,7 +54,13 @@ function fnPage($c, $p, $a)
 	<?php
 	}
 	?>
-	検索結果：<?php print $c; ?>件<br />
+	検索結果：
+	<?php
+	$conn = fnDbConnect();
+	$sql = "SELECT DEL FROM TBLSTOCK WHERE DEL = 1";
+	$res = mysqli_query($conn, $sql);
+	echo $res->num_rows;
+	?>件<br />
 	<?php
 	return ($p);
 }
