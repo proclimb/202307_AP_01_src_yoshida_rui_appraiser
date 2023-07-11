@@ -131,21 +131,21 @@ function subStockView($param)
 		<div class="list">
 			<table border="0" cellpadding="5" cellspacing="1">
 				<tr>
-					<th class="list_head">担当<?php fnOrder('CHARGE', 'stockSearch') ?></th>
-					<th class="list_head">ランク<?php fnOrder('RANK', 'stockSearch') ?></th>
-					<th class="list_head">日付<?php fnOrder('INSDT', 'stockSearch') ?></th>
-					<th class="list_head">物件名<?php fnOrder('ARTICLE', 'stockSearch') ?></th>
-					<th class="list_head">部屋<?php fnOrder('ROOM', 'stockSearch') ?></th>
-					<th class="list_head">面積<?php fnOrder('AREA', 'stockSearch') ?></th>
-					<th class="list_head">最寄駅<?php fnOrder('STATION', 'stockSearch') ?></th>
-					<th class="list_head">距離<?php fnOrder('DISTANCE', 'stockSearch') ?></th>
-					<th class="list_head">業者名<?php fnOrder('AGENT', 'stockSearch') ?></th>
-					<th class="list_head">店舗名<?php fnOrder('STORE', 'stockSearch') ?></th>
-					<th class="list_head">担当者名<?php fnOrder('COVER', 'stockSearch') ?></th>
-					<th class="list_head">内見<?php fnOrder('VISITDT', 'stockSearch') ?></th>
-					<th class="list_head">机上金額<?php fnOrder('DESKPRICE', 'stockSearch') ?></th>
-					<th class="list_head">売主希望金額<?php fnOrder('VENDORPRICE', 'stockSearch') ?></th>
-					<th class="list_head">備考<?php fnOrder('NOTE', 'stockSearch') ?></th>
+					<th class="list_head">担当<br><?php fnOrder('CHARGE', 'stockSearch') ?></th>
+					<th class="list_head">ランク<br><?php fnOrder('RANK', 'stockSearch') ?></th>
+					<th class="list_head">日付<br><?php fnOrder('INSDT', 'stockSearch') ?></th>
+					<th class="list_head">物件名<br><?php fnOrder('ARTICLE', 'stockSearch') ?></th>
+					<th class="list_head">部屋<br><?php fnOrder('ROOM', 'stockSearch') ?></th>
+					<th class="list_head">面積<br><?php fnOrder('AREA', 'stockSearch') ?></th>
+					<th class="list_head">最寄駅<br><?php fnOrder('STATION', 'stockSearch') ?></th>
+					<th class="list_head">距離<br><?php fnOrder('DISTANCE', 'stockSearch') ?></th>
+					<th class="list_head">業者名<br><?php fnOrder('AGENT', 'stockSearch') ?></th>
+					<th class="list_head">店舗名<br><?php fnOrder('STORE', 'stockSearch') ?></th>
+					<th class="list_head">担当者名<br><?php fnOrder('COVER', 'stockSearch') ?></th>
+					<th class="list_head">内見<br><?php fnOrder('VISITDT', 'stockSearch') ?></th>
+					<th class="list_head">机上金額<br><?php fnOrder('DESKPRICE', 'stockSearch') ?></th>
+					<th class="list_head">売主希望金額<br><?php fnOrder('VENDORPRICE', 'stockSearch') ?></th>
+					<th class="list_head">備考<br><?php fnOrder('NOTE', 'stockSearch') ?></th>
 				</tr>
 				<?php
 				$sql  = fnSqlStockList(1, $param);
