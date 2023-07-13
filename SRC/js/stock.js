@@ -1,5 +1,5 @@
 //
-// 仕入管理一覧の列数
+// 仕入管理一覧＞アクティブページの列数
 //
 window.onload = function fnStockListCount() {
 	var list = document.querySelectorAll('.list tr').length - 1;

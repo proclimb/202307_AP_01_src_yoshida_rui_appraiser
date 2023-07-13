@@ -114,12 +114,14 @@ function subStockView($param)
 
 		<hr />
 
+		<?php // ▼▼▼仕入管理一覧▼▼▼
+		?>
 		<?php
 		if ($_REQUEST['act'] == 'stock') {
 			return;
 		}
 
-		$sql = fnSqlStockList(1, $param);
+		$sql = fnSqlStockList(0, $param);
 		$res = mysqli_query($param["conn"], $sql);
 		$row = mysqli_fetch_array($res);
 

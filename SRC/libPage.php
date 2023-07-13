@@ -54,9 +54,7 @@ function fnPage($c, $p, $a)
 	<?php
 	}
 	?>
-	<?php
-	echo '検索結果：' . '<span class="list_count"><script src="./js/stock.js">fnStockListCount();</script></span>件'; ?>
-	<br />
+	検索結果：<?php print $c; ?>件<br />
 	<?php
 	return ($p);
 }
