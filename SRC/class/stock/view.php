@@ -154,12 +154,12 @@ function subStockView($param)
 				$res  = mysqli_query($param["conn"], $sql);
 				$i = 0;
 				while ($row = mysqli_fetch_array($res)) {
-					$stockNo     = htmlspecialchars($row[1]);
-					// $charge      = htmlspecialchars($row[2]);
+					$stockNo     = htmlspecialchars($row[0]);
+					$charge      = htmlspecialchars($row[1]);
 					$rank        = fnRankName(htmlspecialchars($row[2] - 1));
 					$insDT       = htmlspecialchars($row[3]);
 					$article     = htmlspecialchars($row[4]);
-					// $articleFuri = htmlspecialchars($row[5]);
+					$articleFuri = htmlspecialchars($row[5]);
 					$room        = htmlspecialchars($row[6]);
 					$area        = htmlspecialchars($row[7]);
 					$station     = htmlspecialchars($row[8]);
@@ -173,7 +173,7 @@ function subStockView($param)
 					$note        = htmlspecialchars($row[16]);
 				?>
 					<tr>
-						<td class="list_td<?php print $i; ?>"><?php print $stockNo; ?></td>
+						<td class="list_td<?php print $i; ?>"><?php print $charge; ?></td>
 						<td class="list_td<?php print $i; ?>"><?php print $rank; ?></td>
 						<td class="list_td<?php print $i; ?>"><?php print $insDT; ?></td>
 						<td class="list_td<?php print $i; ?>"><a href="javascript:form.act.value='stockEdit';form.stockNo.value=<?php print $stockNo; ?>;form.submit();"><?php print $article; ?></a></td>
