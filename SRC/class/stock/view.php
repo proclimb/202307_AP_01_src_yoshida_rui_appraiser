@@ -110,7 +110,7 @@ function subStockView($param)
 			</table>
 		</div>
 
-		<input type="image" src="./images/btn_search.png" onclick="form.act.value='stockEditComplete';form.submit();" />
+		<input type="image" src="./images/btn_search.png" onclick="form.act.value='stockSearch';form.submit();" />
 
 		<hr />
 
@@ -156,14 +156,14 @@ function subStockView($param)
 				while ($row = mysqli_fetch_array($res)) {
 					$stockNo     = htmlspecialchars($row[1]);
 					// $charge      = htmlspecialchars($row[2]);
-					$rank        = fnRankName(htmlspecialchars($row[2]));
+					$rank        = fnRankName(htmlspecialchars($row[2] - 1));
 					$insDT       = htmlspecialchars($row[3]);
 					$article     = htmlspecialchars($row[4]);
 					// $articleFuri = htmlspecialchars($row[5]);
 					$room        = htmlspecialchars($row[6]);
 					$area        = htmlspecialchars($row[7]);
 					$station     = htmlspecialchars($row[8]);
-					$distance    = fnDistanceName(htmlspecialchars($row[9]));
+					$distance    = fnDistanceName(htmlspecialchars($row[9] - 1));
 					$agent       = htmlspecialchars($row[10]);
 					$store       = htmlspecialchars($row[11]);
 					$cover       = htmlspecialchars($row[12]);
