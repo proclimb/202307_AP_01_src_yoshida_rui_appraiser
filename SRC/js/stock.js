@@ -1,4 +1,12 @@
 //
+// 仕入管理一覧の列数
+//
+window.onload = function fnStockListCount() {
+	var list = document.querySelectorAll('.list tr').length - 1;
+	document.querySelector('.list_count').innerHTML = list;
+}
+
+//
 //仕入管理チェック
 //
 function fnStockEditCheck(){
