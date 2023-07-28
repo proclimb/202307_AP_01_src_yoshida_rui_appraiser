@@ -139,11 +139,11 @@ function fnAuthorityName($n)
 //
 function fnRankName($n)
 {
-	$tmp[0] = 'A';
-	$tmp[1] = 'B';
-	$tmp[2] = 'C';
-	$tmp[3] = 'D';
-	$tmp[4] = 'E';
+	$tmp[1] = 'A';
+	$tmp[2] = 'B';
+	$tmp[3] = 'C';
+	$tmp[4] = 'D';
+	$tmp[5] = 'E';
 
 	return ($tmp[$n]);
 }
@@ -156,10 +156,10 @@ function fnRankName($n)
 //
 function fnDistanceName($n)
 {
-	$tmp[0] = 'A（5分以内）';
-	$tmp[1] = 'B（10分以内）';
-	$tmp[2] = 'C（15分以内）';
-	$tmp[3] = 'D（15分以上）';
+	$tmp[1] = 'A（5分以内）';
+	$tmp[2] = 'B（10分以内）';
+	$tmp[3] = 'C（15分以内）';
+	$tmp[4] = 'D（15分以上）';
 
 	return ($tmp[$n]);
 }
@@ -172,12 +172,12 @@ function fnDistanceName($n)
 //
 function fnHowName($n)
 {
-	$tmp[0] = '会社案件';
-	$tmp[1] = '新規業者（TEL,FAX）';
-	$tmp[2] = '新規業者（訪問）';
-	$tmp[3] = '既存業者（契約有）';
-	$tmp[4] = '既存業者（契約無）';
-	$tmp[5] = 'その他';
+	$tmp[1] = '会社案件';
+	$tmp[2] = '新規業者（TEL,FAX）';
+	$tmp[3] = '新規業者（訪問）';
+	$tmp[4] = '既存業者（契約有）';
+	$tmp[5] = '既存業者（契約無）';
+	$tmp[6] = 'その他';
 
 	return ($tmp[$n]);
 }
