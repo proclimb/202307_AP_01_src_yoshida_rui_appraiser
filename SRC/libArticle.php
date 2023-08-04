@@ -6,14 +6,14 @@ function subArticle()
 {
 	$conn = fnDbConnect();
 
-	$sDel         = $_REQUEST['sDel'];
-	$sArticle     = $_REQUEST['sArticle'];
-	$sRoom        = $_REQUEST['sRoom'];
-	$sKeyPlace    = $_REQUEST['sKeyPlace'];
-	$sArticleNote = $_REQUEST['sArticleNote'];
-	$sKeyBox      = $_REQUEST['sKeyBox'];
-	$sDrawing     = $_REQUEST['sDrawing'];
-	$sSellCharge  = $_REQUEST['sSellCharge'];
+	$sDel         = htmlspecialchars($_REQUEST['sDel']);
+	$sArticle     = htmlspecialchars($_REQUEST['sArticle']);
+	$sRoom        = htmlspecialchars($_REQUEST['sRoom']);
+	$sKeyPlace    = htmlspecialchars($_REQUEST['sKeyPlace']);
+	$sArticleNote = htmlspecialchars($_REQUEST['sArticleNote']);
+	$sKeyBox      = htmlspecialchars($_REQUEST['sKeyBox']);
+	$sDrawing     = htmlspecialchars($_REQUEST['sDrawing']);
+	$sSellCharge  = htmlspecialchars($_REQUEST['sSellCharge']);
 
 	$orderBy = $_REQUEST['orderBy'];
 	$orderTo = $_REQUEST['orderTo'];
@@ -58,7 +58,7 @@ function subArticle()
 				</tr>
 				<tr>
 					<th>物件名</th>
-					<td><input type="text" name="sArticle" value="<?php print $sRooms ?>" size="50" /></td>
+					<td><input type="text" name="sArticle" value="<?php print $sRoom ?>" size="50" /></td>
 					<th>キーBox番号</th>
 					<td><input type="text" name="sKeyBox" value="<?php print $sKeyBox ?>" size="30" /></td>
 				</tr>
@@ -70,7 +70,7 @@ function subArticle()
 				</tr>
 				<tr>
 					<th>鍵場所</th>
-					<td><input type="text" name="sKeyPlace" value="<?php print $sKagPlace ?>" size="30" /></td>
+					<td><input type="text" name="sKeyPlace" value="<?php print $sKeyPlace ?>" size="30" /></td>
 					<th>営業担当者</th>
 					<td><input type="text" name="sSellCharge" value="<?php print $sSellCharge ?>" /></td>
 				</tr>
@@ -86,8 +86,8 @@ function subArticle()
 		return;
 	}
 	$sql = fnSqlArticleList(0, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
-	$res = mysql_query($sql);
-	$row = mysql_fetch_array($res);
+	$res = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($res);
 
 	$count = $row[0];
 
@@ -122,7 +122,7 @@ function subArticle()
 				$sellCharge  = $row["SELLCHARGE"];
 			?>
 				<tr>
-					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $rrticleNo ?>';form.submit();"><?php print $article ?></a></td>
+					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $articleNo ?>';form.submit();"><?php print $article ?></a></td>
 					<td class="list_td<?php print $i ?>"><?php print $room ?></td>
 					<td class="list_td<?php print $i ?>"><?php print $drawing ?></td>
 					<td class="list_td<?php print $i ?>"><?php print $keyPlace ?></td>
@@ -171,15 +171,16 @@ function subArticleEdit()
 		$res = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_array($res);
 
-		$article     =  $row["ARTICLE"];
-		$room        =  $row["ROOM"];
-		$keyPlace    =  $row["KEYPLACE"];
-		$address     =  $row["ADDRESS"];
-		$articleNote =  $row["ARTICLENOTE"];
-		$keyBox      =  $row["KEYBOX"];
-		$drawing     =  $row["DRAWING"];
-		$sellCharge  =  $row["SELLCHARGE"];
-		$del         =  $row["DEL"];
+		$articleNo   = htmlspecialchars($row["ARTICLENO"]);
+		$article     = htmlspecialchars($row["ARTICLE"]);
+		$room        = htmlspecialchars($row["ROOM"]);
+		$keyPlace    = htmlspecialchars($row["KEYPLACE"]);
+		$address    = htmlspecialchars($row["ADDRESS"]);
+		$articleNote = htmlspecialchars($row["ARTICLENOTE"]);
+		$keyBox      = htmlspecialchars($row["KEYBOX"]);
+		$drawing     = htmlspecialchars($row["DRAWING"]);
+		$sellCharge  = htmlspecialchars($row["SELLCHARGE"]);
+		$del        = htmlspecialchars($row["DEL"]);
 
 		$purpose  = '更新';
 		$btnImage = 'btn_load.png';
@@ -260,8 +261,8 @@ function subArticleEdit()
 		</table>
 
 		<a href="javascript:fnArticleEditCheck();"><img src="./images/<?php print $btnImage ?>" /></a>
-		<a href="javascript:form.act.value='fManager';form.submit();"><img src="./images/btn_return.png" /></a>
-		&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a>
+		<a href="javascript:form.act.value='article';form.submit();"><img src="./images/btn_return.png" /></a>
+		<?php if ($articleNo) { ?>&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a><?php } ?>
 	</form>
 <?php
 }
@@ -308,11 +309,10 @@ function subArticleEditComplete()
 	} else {
 		// 新規登録
 		$sql = fnSqlArticleInsert(fnNextNo('ARTICLE'), $article, $room, $keyPlace, $address, $articleNote, $keyBox, $drawing, $sellCharge, $del);
-
 		$res = mysqli_query($conn, $sql);
 
-		/* $sql = fnSqlFManagerInsert(fnNextNo('FM'),$article,$room,$articleNote,$del);
-		   $res = mysqli_query($conn,$sql); */
+		$sql = fnSqlFManagerInsert(fnNextNo('FM'), $article, $room, $articleNote, $del);
+		$res = mysqli_query($conn, $sql);
 	}
 
 	$_REQUEST['act'] = 'articleSearch';
