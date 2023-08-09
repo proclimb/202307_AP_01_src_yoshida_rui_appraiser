@@ -171,7 +171,6 @@ function subArticleEdit()
 		$res = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_array($res);
 
-		$articleNo   = htmlspecialchars($row["ARTICLENO"]);
 		$article     = htmlspecialchars($row["ARTICLE"]);
 		$room        = htmlspecialchars($row["ROOM"]);
 		$keyPlace    = htmlspecialchars($row["KEYPLACE"]);
@@ -213,18 +212,12 @@ function subArticleEdit()
 
 		<table border="0" cellpadding="5" cellspacing="1">
 			<tr>
+			<tr>
 				<th>除外</th>
-				<?php if ($articleNo) { ?>
-					<td>
-						<input type="checkbox" name="del" value="1" checked="checked" /> 非除外
-						<input type="checkbox" name="del" value="0" <?php if ($del == '0') print ' checked="checked"' ?> /> 除外
-					</td>
-				<?php } else { ?>
-					<td>
-						<input type="radio" name="del" value="1" checked="checked" /> 非除外
-						<input type="radio" name="del" value="0" <?php if ($del == '0') print ' checked="checked"' ?> /> 除外
-					</td>
-				<?php } ?>
+				<td>
+					<input type="radio" name="del" value="1" checked="checked" /> 非除外
+					<input type="radio" name="del" value="0" <?php if ($del == '0') print ' checked="checked"' ?> /> 除外
+				</td>
 			</tr>
 			<tr>
 				<th>物件名<span class="red">（必須）</span></th>
