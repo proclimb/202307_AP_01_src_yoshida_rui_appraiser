@@ -46,6 +46,9 @@ div,p,form{
 .center{
 	text-align:center;
 }
+.txt-deco-none {
+	text-decoration: none;
+}
 
 
 #head{
