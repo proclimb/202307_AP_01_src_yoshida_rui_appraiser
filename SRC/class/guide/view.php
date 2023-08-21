@@ -72,14 +72,14 @@ function subGuideView($param)
 					<th>内容</th>
 					<td>
 						<input type="checkbox" name="sContent1" value="1" <?php if ($param["sContent1"] == 1) {
-																				print ' checked="checked"';
-																			} ?> /> <?php print fnContentName(0) ?>
+																																print ' checked="checked"';
+																															} ?> /> <?php print fnContentName(0) ?>
 						<input type="checkbox" name="sContent2" value="1" <?php if ($param["sContent2"] == 1) {
-																				print ' checked="checked"';
-																			} ?> /> <?php print fnContentName(1) ?>
+																																print ' checked="checked"';
+																															} ?> /> <?php print fnContentName(1) ?>
 						<input type="checkbox" name="sContent3" value="1" <?php if ($param["sContent3"] == 1) {
-																				print ' checked="checked"';
-																			} ?> /> <?php print fnContentName(2) ?>
+																																print ' checked="checked"';
+																															} ?> /> <?php print fnContentName(2) ?>
 					</td>
 				</tr>
 				<tr>
@@ -87,11 +87,11 @@ function subGuideView($param)
 					<td>&nbsp;</td>
 					<th>検討・買付</th>
 					<td><input type="checkbox" name="sExam" value="1" <?php if ($param["sExam"] == 1) {
-																			print ' checked="checked"';
-																		} ?> /> 検討
+																															print ' checked="checked"';
+																														} ?> /> 検討
 						<input type="checkbox" name="sPurchase" value="1" <?php if ($param["sPurchase"] == 1) {
-																				print ' checked="checked"';
-																			} ?> /> 買付
+																																print ' checked="checked"';
+																															} ?> /> 買付
 					</td>
 				</tr>
 			</table>
@@ -154,7 +154,7 @@ function subGuideView($param)
 
 			?>
 				<tr>
-					<td class="list_td<?php print $i ?>"><?php print fnContentName($content - 1) ?></td>
+					<td class="list_td<?php print $i ?>"><?php print fnContentName($content) ?></td>
 					<td class="list_td<?php print $i ?>">
 						<?php print $guideStartDT ?>
 						<?php
@@ -528,7 +528,7 @@ function subGuideEditView($param)
 						<th>内容</th>
 						<td colspan="3">
 							<input type="radio" name="<?php print($nameAttr . "[content]") ?>" value="1" checked="checked" /> <?php print fnContentName(0) ?>
-							<?php for ($i = 1; $i < 3; $i++) { ?>
+							<?php for ($i = 0; $i < 3; $i++) { ?>
 								<input type="radio" name="<?php print($nameAttr . "[content]") ?>" value="<?php print $i + 1 ?>" <?php if ($param["content"] == $i + 1) print ' checked="checked"' ?> /> <?php print fnContentName($i) ?>
 							<?php } ?>
 						</td>
