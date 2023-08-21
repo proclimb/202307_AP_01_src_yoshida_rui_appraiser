@@ -404,7 +404,7 @@ function subFManagerView()
 								<?php
 								if ($pdfNo) {
 								?>
-									<td width="10%"><a href="./pdfs/<?php print substr('0000000000' . $pdfNo, -10) . '.pdf'; ?>" target="_blank">表示</a></td>
+									<td width="10%"><a href="./pdfs/<?php print substr('0' . $pdfNo, -10) . '.pdf'; ?>" target="_blank">表示</a></td>
 									<td width="10%"><a href="javascript:form.act.value='fManagerViewEdit';form.pdfNo.value=<?php print $pdfNo; ?>;form.submit();">編集</a></td>
 								<?php
 								} else {
@@ -443,6 +443,7 @@ function subFManagerViewEdit()
 	$sName         = htmlspecialchars($_REQUEST['sName']);
 	$sRoom         = htmlspecialchars($_REQUEST['sRoom']);
 	$sNote         = htmlspecialchars($_REQUEST['sNote']);
+	$sClassNo = htmlspecialchars($_REQUEST['sClassNo']);
 
 	$orderBy = $_REQUEST['orderBy'];
 	$orderTo = $_REQUEST['orderTo'];
@@ -486,6 +487,7 @@ function subFManagerViewEdit()
 			<input type="hidden" name="fMNo" value="<?php print $fMNo; ?>" />
 			<input type="hidden" name="pdfNo" value="<?php print $pdfNo; ?>" />
 			<input type="hidden" name="docNo" value="<?php print $docNo; ?>" />
+			<input type="hidden" name="sClassNo" value="<?php print $sClassNo ?>" />
 
 			<table border="0" cellpadding="5" cellspacing="1">
 				<tr>
@@ -554,7 +556,7 @@ function subFManagerViewEditComplete()
 	}
 
 	if ($_FILES['pdfFile']['tmp_name']) {
-		move_uploaded_file($_FILES['pdfFile']['tmp_name'], './pdfs/' . $pdfNo . '.pdf');
+		move_uploaded_file($_FILES['pdfFile']['tmp_name'], './pdfs/' . substr('0' . $pdfNo, -10) . '.pdf');
 	}
 
 	$_REQUEST['act'] = 'fManagerView';
@@ -576,7 +578,7 @@ function subFManagerViewDelete()
 	$sql = fnSqlFManagerViewDelete($pdfNo);
 	$res = mysqli_query($conn, $sql);
 
-	unlink('./pdfs/' . substr('0000000000' . $pdfNo, -10) . '.pdf');
+	unlink('./pdfs/' . substr('0' . $pdfNo, -10) . '.pdf');
 	$_REQUEST['act'] = 'fManagerView';
 	subFManagerView();
 }
