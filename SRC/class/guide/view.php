@@ -527,9 +527,8 @@ function subGuideEditView($param)
 					<tr>
 						<th>内容</th>
 						<td colspan="3">
-							<input type="radio" name="<?php print($nameAttr . "[content]") ?>" value="1" checked="checked" /> <?php print fnContentName(0) ?>
 							<?php for ($i = 0; $i < 3; $i++) { ?>
-								<input type="radio" name="<?php print($nameAttr . "[content]") ?>" value="<?php print $i + 1 ?>" <?php if ($param["content"] == $i + 1) print ' checked="checked"' ?> /> <?php print fnContentName($i) ?>
+								<input type="radio" name="<?php print($nameAttr . "[content]") ?>" value="<?php print $i ?>" <?php if ($param["content"] == $i) print ' checked="checked"' ?> /> <?php print fnContentName($i) ?>
 							<?php } ?>
 						</td>
 					</tr>
